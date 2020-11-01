@@ -3,6 +3,11 @@ uuid = "00bdae02-379d-4521-9e21-124662fe3143"
 authors = ["joshday <emailjoshday@gmail.com> and contributors"]
 version = "0.1.0"
 
+[deps]
+AbstractTrees = "1520ce14-60c1-5f80-bbc7-55ef81b5835c"
+OrderedCollections = "bac558e1-5e72-5ebc-8fee-abe8a469f55d"
+Tables = "bd369af6-aec1-5ad0-b16a-f7cc5008161c"
+
 [compat]
 julia = "1"
 
