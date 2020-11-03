@@ -26,7 +26,7 @@ end
 #-----------------------------------------------------------------------------# @xy 
 macro xy(df, ex)
     ex.args[1] === :~ && length(ex.args) == 3 || error("Formula must have the form `lhs ~ rhs`")
-    lhs = split_terms(ex.args[2])
+    lhs = [ex.args[2]]  # TODO: allow multivariate responses
     rhs = split_terms(ex.args[3])
 
     yblock = Expr(:call, :OrderedDict)
