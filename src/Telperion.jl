@@ -1,27 +1,9 @@
 module Telperion
 
+using PropertyUtils: PropertyUtils, @with
 using OrderedCollections: OrderedDict
 
-export OrderedDict, @withprops, @xy, dummy
-
-#-----------------------------------------------------------------------------# @withprops
-macro withprops(df, ex)
-    esc(quote
-        eval(Telperion.replace_props!($df, $(Meta.quot(ex))))
-    end)
-end
-
-replace_props!(df, x) = x
-
-replace_props!(df, x::Symbol) = hasproperty(df, x) ? getproperty(df, x) : x
-
-function replace_props!(df, ex::Expr) 
-    if ex.head === :call || ex.head === :.
-        Expr(ex.head, vcat(ex.args[1], replace_props!.(Ref(df), ex.args[2:end]))...)
-    else
-        Expr(ex.head, replace_props!.(Ref(df), ex.args)...)
-    end
-end
+export PropertyUtils, OrderedDict, @xy, @xydata, dummy
 
 #-----------------------------------------------------------------------------# @xy 
 macro xy(df, ex)
@@ -31,11 +13,11 @@ macro xy(df, ex)
 
     yblock = Expr(:call, :OrderedDict)
     for term in lhs 
-        push!(yblock.args, :($(string(term)) => Telperion.@withprops($df, $term)))
+        push!(yblock.args, :($(string(term)) => Telperion.@with($df, $term)))
     end
     xblock = Expr(:call, :OrderedDict)
     for term in rhs 
-        push!(xblock.args, :($(string(term)) => Telperion.@withprops($df, $term)))
+        push!(xblock.args, :($(string(term)) => Telperion.@with($df, $term)))
     end
     esc(quote
         Telperion.process!($df, $xblock), Telperion.process!($df, $yblock)
