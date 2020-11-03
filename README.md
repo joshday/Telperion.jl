@@ -8,8 +8,8 @@ julia> using Telperion
 julia> nt = (x=1,y=2,z=3)
 (x = 1, y = 2, z = 3)
 
-julia> @withprops nt x + y + abs(z)
-6
+julia> @withprops nt x / y + z ^ 2
+9.5
 ```
 
 ### What does **Telperion** do?
