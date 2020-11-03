@@ -16,7 +16,11 @@ replace_props!(df, x) = x
 replace_props!(df, x::Symbol) = hasproperty(df, x) ? getproperty(df, x) : x
 
 function replace_props!(df, ex::Expr) 
-    Expr(ex.head, replace_props!.(Ref(df), ex.args)...)
+    if ex.head === :call || ex.head === :.
+        Expr(ex.head, vcat(ex.args[1], replace_props!.(Ref(df), ex.args[2:end]))...)
+    else
+        Expr(ex.head, replace_props!.(Ref(df), ex.args)...)
+    end
 end
 
 #-----------------------------------------------------------------------------# @xy 
