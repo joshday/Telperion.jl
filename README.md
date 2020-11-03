@@ -90,4 +90,4 @@ x, y = @xy rows(t) y ~ 1 + x
 
 ### Special Thanks
 
-I would not have been able to write this package without the existence of [StatsModels.jl](https://github.com/JuliaStats/StatsModels.jl) or [DataFramesMeta.jl](https://github.com/JuliaData/DataFramesMeta.jl), which are both fantastic.
+I would not have been able to write this package without the existence of [StatsModels.jl](https://github.com/JuliaStats/StatsModels.jl), [DataFramesMeta.jl](https://github.com/JuliaData/DataFramesMeta.jl), or [StatsPlots.jl](https://github.com/JuliaPlots/StatsPlots.jl), which are all fantastic.
