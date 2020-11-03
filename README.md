@@ -1,5 +1,17 @@
 # Telperion
 
+Magic!
+
+```julia
+julia> using Telperion
+
+julia> nt = (x=1,y=2,z=3)
+(x = 1, y = 2, z = 3)
+
+julia> @withprops nt x + y + abs(z)
+6
+```
+
 ### What does **Telperion** do?
 
 ##### 1. Replace items in an expression via `getproperty`
@@ -72,3 +84,7 @@ t = table((x=rand(10), y=rand(10)))
 
 x, y = @xy rows(t) y ~ 1 + x
 ```
+
+### Special Thanks
+
+I would not have been able to write this package without the existence of [StatsModels.jl](https://github.com/JuliaStats/StatsModels.jl) or [DataFramesMeta.jl](https://github.com/JuliaData/DataFramesMeta.jl), which are both fantastic.
