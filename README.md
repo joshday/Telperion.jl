@@ -16,6 +16,8 @@ julia> @withprops nt x / y + z ^ 2
 
 ##### 1. Replace items in an expression via `getproperty`
 
+(Symbols where `!hasproperty(src, x)` are left alone)
+
 ```julia
 using Telperion
 
@@ -74,7 +76,7 @@ Formula syntax is `y ~ 1 + term2 + term3`
 
 ##### Benefits
 
-- Simplicity (currently sitting at 64 LOC).
+- Simplicity (this README has more lines of code).
 - Terms can be any Julia code that creates:
   - An `AbstractVector` or iterable of the correct length.
   - An `OrderedDict` of `AbstractVector`/iterables (for terms that create multiple columns)
