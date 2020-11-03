@@ -1,5 +1,7 @@
 # Telperion: Parse Statistical Formulas into Feature Columns.
 
+- See [PropertyUtils.jl](https://github.com/joshday/PropertyUtils.jl) for the functions/macros this package is based on.
+
 ```julia
 using DataFrames, StatsBase, Telperion
 
