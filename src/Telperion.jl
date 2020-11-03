@@ -48,6 +48,8 @@ function split_terms(x::Expr)
     x.args[2:end]
 end
 
+#-----------------------------------------------------------------------------# process!
+# Deal with special things : Numbers and OrderedDicts
 function process!(df, dict)
     for (k,v) in dict 
         if v isa OrderedDict 
@@ -63,6 +65,6 @@ function process!(df, dict)
 end
 
 #-----------------------------------------------------------------------------# functions 
-dummy(x; base=first) = OrderedDict("$l" => x .== l for l in sort(unique(x))[2:end])
+dummy(x) = OrderedDict("$level" => x .== level for level in sort(unique(x))[2:end])
 
 end
